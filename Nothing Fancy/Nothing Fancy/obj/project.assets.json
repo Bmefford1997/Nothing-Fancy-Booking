@@ -656,23 +656,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Brandon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Owner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brandon\\Desktop\\github clones\\Nothing Fancy\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\Nothing Fancy.csproj",
+      "projectUniqueName": "E:\\Desktop\\Git\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\Nothing Fancy.csproj",
       "projectName": "Nothing Fancy",
-      "projectPath": "C:\\Users\\Brandon\\Desktop\\github clones\\Nothing Fancy\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\Nothing Fancy.csproj",
-      "packagesPath": "C:\\Users\\Brandon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brandon\\Desktop\\github clones\\Nothing Fancy\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\obj\\",
+      "projectPath": "E:\\Desktop\\Git\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\Nothing Fancy.csproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "E:\\Desktop\\Git\\Nothing-Fancy-Booking\\Nothing Fancy\\Nothing Fancy\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Brandon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -719,7 +715,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
