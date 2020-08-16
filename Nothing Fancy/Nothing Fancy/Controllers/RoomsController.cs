@@ -28,7 +28,7 @@ namespace Nothing_Fancy.Controllers
             return View();
         }
 
-        public IActionResult Room104()
+        public IActionResult Rooms()
         {
             return View();
         }
