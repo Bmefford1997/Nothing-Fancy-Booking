@@ -26,9 +26,11 @@ namespace Nothing_Fancy
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RoomDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("RoomConnection")));
+            services.AddDbContext<ReservationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ReservationConnection")));
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
