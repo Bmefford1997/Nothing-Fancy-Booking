@@ -704,3 +704,7 @@ E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netco
 E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Nothing Fancy.dll
 E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Nothing Fancy.pdb
 E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Nothing Fancy.genruntimeconfig.cache
+E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Room101.cshtml.g.cs
+E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Room102.cshtml.g.cs
+E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Room103.cshtml.g.cs
+E:\Desktop\Git\Nothing-Fancy-Booking\Nothing Fancy\Nothing Fancy\obj\Debug\netcoreapp3.1\Razor\Views\Rooms\Room104.cshtml.g.cs
