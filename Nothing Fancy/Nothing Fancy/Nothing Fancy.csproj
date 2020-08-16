@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Calander\" />
+    <Folder Include="Views\Reservation\" />
+  </ItemGroup>
+
 </Project>
