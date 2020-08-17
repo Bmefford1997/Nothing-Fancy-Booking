@@ -3,10 +3,43 @@
 }
 <div class="text-center">
     <h1 class="display-4">Welcome to our List of Rooms</h1>
-    <ul class="list-group">
-        <li class="list-group-item"><a asp-area="" asp-controller="Rooms" asp-action="Room101">Room 101</a></li>
-        <li class="list-group-item"><a asp-area="" asp-controller="Rooms" asp-action="Room102">Room 102</a></li>
-        <li class="list-group-item"><a asp-area="" asp-controller="Rooms" asp-action="Room103">Room 103</a></li>
-    </ul>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card h-100" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/BBlf9Zf.jpg" width=286 height=180 alt="This is Room 101">
+                    <div class="card-body">
+                        <h5 class="card-title">Room 101</h5>
+                        <p class="card-text">Standard room, comes with a bed and a bathroom. </p>
+                        <br />
+                        <a asp-area="" asp-controller="Rooms" asp-action="Room101" class="btn btn-primary">View Room 101</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/43cc893c81e31356ac2bb63b0395a849.jpg" width=286 height=180 alt="This is Room 102" />
+                    <div class="card-body">
+                        <h5 class="card-title">Room 102</h5>
+                        <p class="card-text">A nice room with a view. Too bad you're paying more for the view than the actual room.</p>
+                        <a asp-area="" asp-controller="Rooms" asp-action="Room102" class="btn btn-primary">View Room 102</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/BB32zT.jpg" width=286 height=180 alt="This is Room 103">
+                    <div class="card-body">
+                        <h5 class="card-title">Room 103</h5>
+                        <p class="card-text">A room for Kings.</p>
+                        <br />
+                        <br />
+                        <a asp-area="" asp-controller="Rooms" asp-action="Room103" class="btn btn-primary">View Room 103</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>

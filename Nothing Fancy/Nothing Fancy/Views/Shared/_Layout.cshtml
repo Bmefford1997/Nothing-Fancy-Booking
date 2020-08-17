@@ -6,10 +6,45 @@
     <title>@ViewData["Title"] - Nothing_Fancy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/7cb494158b.js" crossorigin="anonymous"></script>
+    <script>
+        function openSideMenu() {
+            document.getElementById('menu').style.width = '250px';
+            document.getElementById('content').style.marginLeft = '250px';
+        }
+
+        function closeSideMenu() {
+            document.getElementById('menu').style.width = '0px';
+            document.getElementById('content').style.marginLeft = '0px';
+        }
+    </script>
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <!--Sidebar menu start-->
+            <div id="content">
+            <span class="slide">
+                <a href="#" onclick="openSideMenu()">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
+            </span>
+            <div id="menu" class="navside">
+                <a href="#" class="close" onclick="closeSideMenu()">
+                    <i class="fas fa-times" data-fa-transform="up-12"></i>
+                </a>
+
+                <a href="#">Home</a>
+                <a href="#">Home</a>
+                <a href="#">Home</a>
+                <a href="#">Home</a>
+                <a href="#">Home</a>
+            </div>
+        </div>
+        <!--Sidebar menu ends-->
+
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Nothing_Fancy</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
