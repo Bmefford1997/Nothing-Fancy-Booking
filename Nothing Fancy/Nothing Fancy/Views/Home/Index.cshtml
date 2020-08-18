@@ -2,23 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome to our Nothing Fancy Hotel</h1>
-        <div id="carouselExampleControls" class="carousel slide-fase" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="~/images/GettyImages-975732182-e1567546028772-1200x480.jpg" class="d-block w-100" alt="...">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/images/bb578d8aab4e8b634a5b6f81e370fbb8.jpg" alt="First slide">
+                <div class="carousel-caption" id="carousel-caption-index">
+                    <h1>Nothing Fancy Hotel</h1>
+                    <h3>The only hotel that doesn't try</h3>
+                    <a asp-area="" asp-controller="Rooms" asp-action="Rooms" class="btn btn-light">Reserve Now</a>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-        <div class="dropdown-divider"></div>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>
+
+@*<div class="container" style="width:100%;">
+            <img style="width:100%;height:600px;" id="homepageBanner" src="~/images/GettyImages-975732182-e1567546028772-1200x480.jpg" />
+        </div>
+
+    <img style="width:100%;height:600px;" id="homepageBanner" src="~/images/GettyImages-975732182-e1567546028772-1200x480.jpg" />
+    <p class="text-over-img">THE ONLY HOTEL THAT DOESN'T TRY</p>
+    <p class="text-over-img" top="1%">Nothing Fancy Hotel</p>
+    <a class="btn btn-outline-secondary" id="bookNow" href="#" role="button">Book Now</a>*@
+@*<div class="jumbotron">
+        <div class="text-center">
+            <h1 class="display-4">Hello, welcome to our Nothing Fancy Hotel!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>*@
+

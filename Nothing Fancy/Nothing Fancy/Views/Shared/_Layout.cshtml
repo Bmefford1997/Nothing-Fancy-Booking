@@ -6,7 +6,9 @@
     <title>@ViewData["Title"] - Nothing_Fancy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/lib/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
     <script src="https://kit.fontawesome.com/7cb494158b.js" crossorigin="anonymous"></script>
     <script>
         function openSideMenu() {
@@ -23,27 +25,27 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <!--Sidebar menu start-->
             <div id="content">
-            <span class="slide">
-                <a href="#" onclick="openSideMenu()">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </a>
-            </span>
-            <div id="menu" class="navside">
-                <a href="#" class="close" onclick="closeSideMenu()">
-                    <i class="fas fa-times" data-fa-transform="up-12"></i>
-                </a>
+                <span class="slide">
+                    <a href="#" onclick="openSideMenu()">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                </span>
+                <div id="menu" class="navside">
+                    <a href="#" class="close" onclick="closeSideMenu()">
+                        <i class="fas fa-times" data-fa-transform="up-12"></i>
+                    </a>
 
-                <a href="#">Home</a>
-                <a href="#">Home</a>
-                <a href="#">Home</a>
-                <a href="#">Home</a>
-                <a href="#">Home</a>
+                    <a href="#">Home</a>
+                    <a href="#">Home</a>
+                    <a href="#">Home</a>
+                    <a href="#">Home</a>
+                    <a href="#">Home</a>
+                </div>
             </div>
-        </div>
-        <!--Sidebar menu ends-->
+            <!--Sidebar menu ends-->
 
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Nothing_Fancy</a>
@@ -67,11 +69,10 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
