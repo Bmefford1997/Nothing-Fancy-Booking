@@ -13,7 +13,8 @@ namespace Nothing_Fancy.Models
         [Required]
         public string reserverName { get; set; }
         public string nameOfRoom { get; set; }
-        public DateTime reserveDate { get; set; }
+        public DateTime reserveDateBegin { get; set; }
+        public DateTime reserveDateEnd { get; set; }
         public double cost { get; set; }
     }
 }
