@@ -5,54 +5,56 @@
 }
 
 
-<h1>Create</h1>
+<div class="container">
+    <h1>Create</h1>
 
-<h4>Reservation</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="reserverName" class="control-label">Name</label>
-                <input asp-for="reserverName" id="name" value="" class="form-control" />
-                <span asp-validation-for="reserverName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="nameOfRoom" class="control-label">Room Select</label>
-                <select asp-for="nameOfRoom" list="rooms" class="form-control">
-                    <option value="Room101">Room101</option>
-                    <option value="Room102">Room102</option>
-                    <option value="Room103">Room103</option>
-                </select>
-                <span asp-validation-for="nameOfRoom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="reserveDateBegin" class="control-label">Begin Date</label>
-                <input asp-for="reserveDateBegin" type="text" id="datepickerBegin" onkeyup="checkTextBox();"  onchange="checkTextBox();" class="form-control" />
-                <span asp-validation-for="reserveDateBegin" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="reserveDateEnd" class="control-label">End Date</label>
-                <input asp-for="reserveDateEnd" type="text" id="datepickerEnd" onkeyup="checkTextBox();" onchange="checkTextBox();" class="form-control" />
-                <span asp-validation-for="reserveDateEnd" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
+    <h4>Reservation</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="reserverName" class="control-label">Name</label>
+                    <input asp-for="reserverName" id="name" value="" class="form-control" />
+                    <span asp-validation-for="reserverName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="nameOfRoom" class="control-label">Room Select</label>
+                    <select asp-for="nameOfRoom" list="rooms" class="form-control">
+                        <option value="Room101">Room101</option>
+                        <option value="Room102">Room102</option>
+                        <option value="Room103">Room103</option>
+                    </select>
+                    <span asp-validation-for="nameOfRoom" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="reserveDateBegin" class="control-label">Begin Date</label>
+                    <input asp-for="reserveDateBegin" type="text" id="datepickerBegin" onkeyup="checkTextBox();" onchange="checkTextBox();" class="form-control" />
+                    <span asp-validation-for="reserveDateBegin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="reserveDateEnd" class="control-label">End Date</label>
+                    <input asp-for="reserveDateEnd" type="text" id="datepickerEnd" onkeyup="checkTextBox();" onchange="checkTextBox();" class="form-control" />
+                    <span asp-validation-for="reserveDateEnd" class="text-danger"></span>
+                </div>
 
-                <label asp-for="cost" class="control-label">Calculated Cost</label>
-                <input asp-for="cost" id="totalCost" readonly="readonly" class="form-control"  />
-                <span asp-validation-for="cost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+
+                    <label asp-for="cost" class="control-label">Calculated Cost</label>
+                    <input asp-for="cost" id="totalCost" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="cost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {
