@@ -8,11 +8,6 @@ namespace Nothing_Fancy.Controllers
 {
     public class RoomsController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Room101()
         {
             return View();
@@ -28,7 +23,7 @@ namespace Nothing_Fancy.Controllers
             return View();
         }
 
-        public IActionResult Rooms()
+        public IActionResult Listing()
         {
             return View();
         }
