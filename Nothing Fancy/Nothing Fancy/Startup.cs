@@ -25,7 +25,7 @@ namespace Nothing_Fancy
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddDbContext<ReviewDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ReviewConnection")));
             services.AddDbContext<ReservationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ReservationConnection")));
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
