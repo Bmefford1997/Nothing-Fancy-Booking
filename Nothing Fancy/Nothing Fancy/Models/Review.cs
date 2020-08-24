@@ -13,6 +13,7 @@ namespace Nothing_Fancy.Models
         [Required]
         public string reviewerName { get; set; }
         public double reviewRate { get; set; }
+        public DateTime reviewDate { get; set; }
         public string reviewContent { get; set; }
     }
 }
