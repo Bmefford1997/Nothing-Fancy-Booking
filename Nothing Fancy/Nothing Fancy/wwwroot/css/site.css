@@ -15,32 +15,6 @@ a.navbar-brand {
   border-color: #1861ac;
 }
 
-.box {
-    font-size: 40px;
-    direction: rtl;
-}
-    .box a {
-        transition: .3s all;
-    }
-        .box a:hover {
-            color: #ffd800;
-        }
-/*#ffd800*/
-.b1:hover ~ a {
-    color: blue
-}
-.b2:hover ~ a {
-    color: green
-}
-.b3:hover ~ a {
-    color: #ffd800
-}
-.b4:hover ~ a {
-    color: #ffd800
-}
-.b5:hover ~ a {
-    color: red
-}
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
