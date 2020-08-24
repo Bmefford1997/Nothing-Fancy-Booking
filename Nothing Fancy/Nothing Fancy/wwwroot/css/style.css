@@ -1,0 +1,89 @@
+﻿
+#bookNow {
+    top: 50%;
+    left: 50%;
+    width: 400px;
+}
+
+
+#layout-navbar {
+    background-color: rgba(28, 36, 49, 0.70);
+}
+
+#layout-footer {
+    background-color: rgb(28, 36, 49);
+}
+
+
+#carousel-home-index {
+    /*dont ask pls*/
+    width: 99.55vw;
+    position: relative;
+    margin-left: -50vw;
+    height: 100%;
+    left: 50%;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#carousel-home-img {
+    display: grid;
+    max-width: 100%;
+    max-height: 100vh;
+    min-width: 100vh;
+    min-height: 100vh;
+    object-fit: cover;
+    margin: auto;
+    background-size: cover;
+}
+
+#carousel-caption-index {
+    top: 200px;
+    color: white;
+    bottom: auto;
+    font-family: 'Varela Round', sans-serif;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+#room-title {
+    padding-top: 25px;
+    animation: slideFadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#room-card-box-animation {
+    animation: slideFadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#roomImage {
+    padding-bottom: 30px;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideFadeInAnimation {
+    0% {
+        opacity: 0;
+        top: -25px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 20px;
+    }
+}
