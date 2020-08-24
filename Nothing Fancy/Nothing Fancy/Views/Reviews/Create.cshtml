@@ -12,13 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group pb-2">
+            <div class="form-group">
                 <label asp-for="reviewerName" class="control-label">Name</label>
                 <input asp-for="reviewerName" class="form-control " />
                 <span asp-validation-for="reviewerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="reviewRate" class="control-label pr-3">Rating:</label>
+                <label asp-for="reviewRate" class="control-label ">Rating:</label>
                 <div class="box">
                     <a class="fa fa-star b1" id="box-star"></a>
                     <a class="fa fa-star b2" id="box-star"></a>
@@ -29,9 +29,17 @@
                 <span asp-validation-for="reviewRate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="reviewContent" class="control-label">Review:</label>
-                <textarea class="form-control" id="Description" name="Description" rows="2" cols="20" placeholder="Enter your review here"></textarea>
-                <span asp-validation-for="reviewContent" class="text-danger"></span>
+                <label asp-for="reviewDate" class="control-label">Date</label>
+                <input asp-for="reviewDate" class="form-control" value="@DateTime.Now" readonly />
+                <span asp-validation-for="reviewDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="reviewContent" class="control-label">Review:</label>
+                    <textarea class="form-control" asp-for="reviewContent" id="Description"
+                              name="Description" rows="2" cols="20" placeholder="Enter your review here"></textarea>
+                    <span asp-validation-for="reviewContent" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

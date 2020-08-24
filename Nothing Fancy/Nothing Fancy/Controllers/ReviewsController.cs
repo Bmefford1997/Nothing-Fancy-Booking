@@ -19,13 +19,13 @@ namespace Nothing_Fancy.Controllers
             _context = context;
         }
 
-        // GET: Reviews
+        // GET: Review
         public async Task<IActionResult> Index()
         {
             return View(await _context.Review.ToListAsync());
         }
 
-        // GET: Reviews/Details/5
+        // GET: Review/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +43,18 @@ namespace Nothing_Fancy.Controllers
             return View(review);
         }
 
-        // GET: Reviews/Create
+        // GET: Review/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Reviews/Create
+        // POST: Review/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,reviewerName,reviewRate,reviewContent")] Review review)
+        public async Task<IActionResult> Create([Bind("Id,reviewerName,reviewRate,reviewDate,reviewContent")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace Nothing_Fancy.Controllers
             return View(review);
         }
 
-        // GET: Reviews/Edit/5
+        // GET: Review/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,12 +81,12 @@ namespace Nothing_Fancy.Controllers
             return View(review);
         }
 
-        // POST: Reviews/Edit/5
+        // POST: Review/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,reviewerName,reviewRate,reviewContent")] Review review)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,reviewerName,reviewRate,reviewDate,reviewContent")] Review review)
         {
             if (id != review.Id)
             {
@@ -116,7 +116,7 @@ namespace Nothing_Fancy.Controllers
             return View(review);
         }
 
-        // GET: Reviews/Delete/5
+        // GET: Review/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace Nothing_Fancy.Controllers
             return View(review);
         }
 
-        // POST: Reviews/Delete/5
+        // POST: Review/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
