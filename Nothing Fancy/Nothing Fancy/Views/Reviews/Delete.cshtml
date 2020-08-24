@@ -11,28 +11,38 @@
     <h4>Review</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reviewerName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title) :
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Name:
+            @*@Html.DisplayNameFor(model => model.reviewerName)*@
+        </dt>
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.reviewerName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reviewRate)
+        <dt class="col-sm-2">
+            Rating:
+            @*@Html.DisplayNameFor(model => model.reviewRate)*@
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.reviewRate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reviewDate)
+        <dt class="col-sm-2">
+            Date:
+            @*@Html.DisplayNameFor(model => model.reviewDate)*@
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.reviewDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reviewContent)
+        <dt class="col-sm-2">
+            Review:
+            @*@Html.DisplayNameFor(model => model.reviewContent)*@
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.reviewContent)
         </dd>
     </dl>

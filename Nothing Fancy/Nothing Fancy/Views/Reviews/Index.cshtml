@@ -13,20 +13,24 @@
     <thead>
         <tr>
             <th>
+                Title:
+                @*@Html.DisplayNameFor(model => model.Title)*@
+            </th>
+            <th>
+                Name:
                 @*@Html.DisplayNameFor(model => model.reviewerName)*@
-                Name
             </th>
             <th>
+                Rating:
                 @*@Html.DisplayNameFor(model => model.reviewRate)*@
-                Rating
             </th>
             <th>
+                Date:
                 @*@Html.DisplayNameFor(model => model.reviewDate)*@
-                Date
             </th>
             <th>
+                Review:
                 @*@Html.DisplayNameFor(model => model.reviewContent)*@
-                Review
             </th>
             <th></th>
         </tr>
@@ -34,6 +38,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.reviewerName)
             </td>

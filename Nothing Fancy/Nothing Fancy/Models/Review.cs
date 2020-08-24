@@ -11,6 +11,7 @@ namespace Nothing_Fancy.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public string Title { get; set; }
         public string reviewerName { get; set; }
         public double reviewRate { get; set; }
         public DateTime reviewDate { get; set; }
