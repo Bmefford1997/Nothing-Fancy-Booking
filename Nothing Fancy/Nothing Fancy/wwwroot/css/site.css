@@ -22,24 +22,25 @@ a.navbar-brand {
     .box a {
         transition: .3s all;
     }
-        .box a:hover {
+        .box #box-star:hover {
             color: #ffd800;
         }
+
 /*#ffd800*/
 .b1:hover ~ a {
-    color: blue
+    color: #ffd800;
 }
 .b2:hover ~ a {
-    color: green
+    color: #ffd800;
 }
 .b3:hover ~ a {
-    color: #ffd800
+    color: #ffd800;
 }
 .b4:hover ~ a {
-    color: #ffd800
+    color: #ffd800;
 }
 .b5:hover ~ a {
-    color: red
+    color: #ffd800;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
