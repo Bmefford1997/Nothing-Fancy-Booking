@@ -23,14 +23,21 @@
                 <span asp-validation-for="reviewerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="reviewRate" class="control-label ">Rating:</label>
-                <div class="box">
-                    <a class="fa fa-star b1" id="box-star"></a>
-                    <a class="fa fa-star b2" id="box-star"></a>
-                    <a class="fa fa-star b3" id="box-star"></a>
-                    <a class="fa fa-star b4" id="box-star"></a>
-                    <a class="fa fa-star b5" id="box-star"></a>
+
+
+
+                <label asp-for="reviewRate" class="control-label">Rating:</label>
+                <div class="ratings" onclick="starSelect()">
+                    <a class="fa fa-star-o" name="star"></a>
+                    <a class="fa fa-star-o" name="star"></a>
+                    <a class="fa fa-star-o" name="star"></a>
+                    <a class="fa fa-star-o" name="star"></a>
+                    <a class="fa fa-star-o" name="star"></a>
                 </div>
+
+
+
+                <input asp-for="reviewRate" id="rating-value" class="form-control" hidden/>
                 <span asp-validation-for="reviewRate" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -15,33 +15,14 @@ a.navbar-brand {
   border-color: #1861ac;
 }
 
-.box {
-    font-size: 40px;
-    direction: rtl;
+.ratings {
+    color: #ffd800;
 }
-    .box a {
-        transition: .3s all;
-    }
-        .box #box-star:hover {
-            color: #ffd800;
-        }
 
-/*#ffd800*/
-.b1:hover ~ a {
-    color: #ffd800;
+.ratings .fa {
+    font-size: 30px;
 }
-.b2:hover ~ a {
-    color: #ffd800;
-}
-.b3:hover ~ a {
-    color: #ffd800;
-}
-.b4:hover ~ a {
-    color: #ffd800;
-}
-.b5:hover ~ a {
-    color: #ffd800;
-}
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
