@@ -21,9 +21,9 @@ function calculateCost(dateBegin, dateEnd) {
     roomCost = 0
     var differenceInTime = dateEnd.getTime() - dateBegin.getTime();
     var differenceInDays = (differenceInTime / (1000 * 3600 * 24)) + 1
-    
+
     if (isNaN(differenceInDays) == false) {
-        
+
         switch (room) {
             case "Room101":
                 roomCost = 10;
@@ -38,7 +38,40 @@ function calculateCost(dateBegin, dateEnd) {
                 calcFormat(differenceInDays, roomCost);
                 break;
             default:
-                
+
         }
     }
+}
+
+const stars = document.querySelector(".ratings").children;
+const ratingValue = document.querySelector("#rating-value");
+let index;
+
+for (let i = 0; i < stars.length; i++) {
+    stars[i].addEventListener("mouseover", function () {
+        // console.log(i)
+        for (let j = 0; j < stars.length; j++) {
+            stars[j].classList.remove("fa-star");
+            stars[j].classList.add("fa-star-o");
+        }
+        for (let j = 0; j <= i; j++) {
+            stars[j].classList.remove("fa-star-o");
+            stars[j].classList.add("fa-star");
+        }
+    })
+    stars[i].addEventListener("click", function () {
+        ratingValue.value = i + 1;
+        index = i;
+    })
+    stars[i].addEventListener("mouseout", function () {
+
+        for (let j = 0; j < stars.length; j++) {
+            stars[j].classList.remove("fa-star");
+            stars[j].classList.add("fa-star-o");
+        }
+        for (let j = 0; j <= index; j++) {
+            stars[j].classList.remove("fa-star-o");
+            stars[j].classList.add("fa-star");
+        }
+    })
 }
