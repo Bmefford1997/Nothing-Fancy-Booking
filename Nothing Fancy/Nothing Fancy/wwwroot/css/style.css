@@ -1,4 +1,8 @@
 ﻿
+#id01 {
+    list-style:none;
+}
+
 #bookNow {
     top: 50%;
     left: 50%;
@@ -64,6 +68,10 @@
 
 #roomImage {
     padding-bottom: 30px;
+}
+
+#review-star-comment-checked {
+    color: #ffd800;
 }
 
 @keyframes fadeInAnimation {

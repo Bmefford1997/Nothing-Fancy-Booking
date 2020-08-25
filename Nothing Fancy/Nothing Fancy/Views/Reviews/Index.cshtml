@@ -4,60 +4,105 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+    <div class="container">
+        <h1>Reviews</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Title:
-                @*@Html.DisplayNameFor(model => model.Title)*@
-            </th>
-            <th>
-                Name:
-                @*@Html.DisplayNameFor(model => model.reviewerName)*@
-            </th>
-            <th>
-                Rating:
-                @*@Html.DisplayNameFor(model => model.reviewRate)*@
-            </th>
-            <th>
-                Date:
-                @*@Html.DisplayNameFor(model => model.reviewDate)*@
-            </th>
-            <th>
-                Review:
-                @*@Html.DisplayNameFor(model => model.reviewContent)*@
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reviewerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reviewRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reviewDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reviewContent)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <p>
+            <a asp-action="Create">Add Review</a>
+        </p>
+        <button onclick="sortList()">Sort</button>
+        <p>@Model.ToList()[0].reviewerName</p>
+        <ul id="id01">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <b>
+                        @Html.DisplayFor(modelItem => item.reviewRate).0
+                    </b>
+
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        @if (i < @item.reviewRate)
+                        {
+                            <span><a class="fa fa-star" id="review-star-comment-checked"></a></span>
+                        }
+                        else
+                        {
+                            <span><a class="fa fa-star"></a></span>
+                        }
+
+                    }
+
+                    <h3>
+                        "@Html.DisplayFor(modelItem => item.Title)"
+                    </h3>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.reviewContent)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.reviewDate) |
+                        @Html.DisplayFor(modelItem => item.reviewerName) |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </p>
+                    <hr />
+                    <br />
+                </li>
+            }
+        </ul>
+        <!--
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title:
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                </th>
+                <th>
+                    Name:
+                    @*@Html.DisplayNameFor(model => model.reviewerName)*@
+                </th>
+                <th>
+                    Rating:
+                    @*@Html.DisplayNameFor(model => model.reviewRate)*@
+                </th>
+                <th>
+                    Date:
+                    @*@Html.DisplayNameFor(model => model.reviewDate)*@
+                </th>
+                <th>
+                    Review:
+                    @*@Html.DisplayNameFor(model => model.reviewContent)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        -->
+        @*@foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.reviewerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.reviewRate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.reviewDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.reviewContent)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+    </div>
