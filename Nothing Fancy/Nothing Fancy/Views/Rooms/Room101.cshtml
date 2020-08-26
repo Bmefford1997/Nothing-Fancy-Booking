@@ -3,7 +3,32 @@
 }
 <div class="container">
     <div class="text-center">
-        <h1 class="display-4" >Welcome to @ViewData["Title"]</h1>
-        <img src="~/images/BBlf9Zf.jpg" class="img-fluid" id="roomImage" alt="Room 101">
+        <h1 class="display-4"> @ViewData["Title"]</h1>
+        <div class="row pt-2">
+            <div class="col">
+                <strong class=" float-xl-left h3">Rooms are all equipped with: </strong>
+                <br />
+                <br />
+                <ul class="text-justify pl-lg-5">
+                    <li>king-size bed</li>
+                    <li>flat-screen television</li>
+                    <li>mini bar fridge and a safe</li>
+                </ul>
+
+                <p class="text-left">
+                    The bathroom features a luxurious shower and refreshing atmosphere. <br />
+                    Complimentary Wi-Fi and full-range access to our gym. Room size is <br />
+                    approximately 40 sqft.
+                </p>
+
+                <br />
+                <br />
+                <a asp-area="" asp-controller="Reservation" asp-action="Create" class="btn btn-primary">Reserve Now</a>
+                <a asp-area="" asp-controller="Rooms" asp-action="Listing" class="btn"> <small>Back to listing </small> </a>
+            </div>
+            <div class="col">
+                <img src="~/images/BBlf9Zf.jpg" class="img-fluid" id="roomImage" alt="Room 101">
+            </div>
+        </div>
     </div>
 </div>
