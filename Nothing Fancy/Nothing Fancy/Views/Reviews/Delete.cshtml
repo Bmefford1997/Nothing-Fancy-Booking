@@ -36,7 +36,7 @@
             @*@Html.DisplayNameFor(model => model.reviewDate)*@
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.reviewDate)
+            @String.Format("{0:MM/dd/yyyy}", Model.reviewDate)
         </dd>
         <dt class="col-sm-2">
             Review:

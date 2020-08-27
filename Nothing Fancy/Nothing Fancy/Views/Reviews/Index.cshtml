@@ -40,7 +40,7 @@
                         @Html.DisplayFor(modelItem => item.reviewContent)
                     </p>
                     <p>
-                        @Html.DisplayFor(modelItem => item.reviewDate) |
+                        @String.Format("{0:MM/dd/yyyy}", item.reviewDate) |
                         @Html.DisplayFor(modelItem => item.reviewerName) |
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>

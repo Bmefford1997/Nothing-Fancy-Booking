@@ -10,39 +10,43 @@
     <h4>Reservation</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reserverName)
+        <dt class="col-sm-2">
+            Name:
+            @*@Html.DisplayNameFor(model => model.reserverName)*@
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.reserverName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nameOfRoom)
+        <dt class="col-sm-2">
+            Room:
+            @*@Html.DisplayNameFor(model => model.nameOfRoom)*@
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nameOfRoom)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reserveDateBegin)
+        <dt class="col-sm-2">
+            Begin Date:
+            @*@Html.DisplayNameFor(model => model.reserveDateBegin)*@
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.reserveDateBegin)
+        <dd class="col-sm-10">
+            @String.Format("{0:MM/dd/yyyy}", Model.reserveDateBegin)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reserveDateEnd)
+        <dt class="col-sm-2">
+            End Date:
+            @*@Html.DisplayNameFor(model => model.reserveDateEnd)*@
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.reserveDateEnd)
+        <dd class="col-sm-10">
+            @String.Format("{0:MM/dd/yyyy}", Model.reserveDateEnd)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cost)
+        <dt class="col-sm-2">
+            Cost:
+            @*@Html.DisplayNameFor(model => model.cost)*@
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cost)
+        <dd class="col-sm-10">
+            @String.Format("{0:c}", Model.cost)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
