@@ -20,9 +20,47 @@ namespace Nothing_Fancy.Controllers
         }
 
         // GET: Reviews
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            return View(await _context.Review.ToListAsync());
+            var reviews = from r in _context.Review
+                          select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                reviews = reviews.Where(s => (s.reviewerName.Contains(searchString) ||
+                                              s.Title.Contains(searchString)));
+            }
+
+            switch (sortOrder)
+            {
+                case "Date_A":
+                    reviews = _context.Review.OrderBy(r => r.reviewDate);
+                    break;
+                case "Date_D":
+                    reviews = _context.Review.OrderByDescending(r => r.reviewDate);
+                    break;
+                case "Name_A":
+                    reviews = _context.Review.OrderBy(r => r.reviewerName);
+                    break;
+                case "Name_D":
+                    reviews = _context.Review.OrderByDescending(r => r.reviewerName);
+                    break;
+                case "Title_A":
+                    reviews = _context.Review.OrderBy(r => r.Title);
+                    break;
+                case "Title_D":
+                    reviews = _context.Review.OrderByDescending(r => r.Title);
+                    break;
+                case "Rating_A":
+                    reviews = _context.Review.OrderBy(r => r.reviewRate);
+                    break;
+                case "Rating_D":
+                    reviews = _context.Review.OrderByDescending(r => r.reviewRate);
+                    break;
+            }
+
+            return View(await reviews.ToListAsync());
+
         }
 
         // GET: Reviews/Details/5

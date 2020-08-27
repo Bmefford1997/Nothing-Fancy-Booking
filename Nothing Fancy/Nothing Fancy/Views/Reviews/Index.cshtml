@@ -4,14 +4,226 @@
     ViewData["Title"] = "Index";
 }
 
-    <div class="container">
-        <h1>Reviews</h1>
+@functions {
+    public double averageUserRating()
+    {
+        int counter = 0;
+        double totalRating = 0;
+        foreach (var item in Model)
+        {
+            counter++;
+            totalRating += item.reviewRate;
+        }
 
-        <p>
-            <a asp-action="Create">Add Review</a>
-        </p>
-        <button onclick="sortList()">Sort</button>
-        <p>@Model.ToList()[0].reviewerName</p>
+        return totalRating / counter;
+    }
+
+    public int userRatingCount()
+    {
+        int counter = 0;
+        foreach (var item in Model)
+        {
+            counter++;
+        }
+
+        return counter;
+    }
+
+    public void printStars(double starRating)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < starRating)
+            {
+                <span><a class="fa fa-star" id="review-star-comment-checked"></a></span>
+            }
+            else
+            {
+                <span><a class="fa fa-star"></a></span>
+            }
+        }
+    }
+
+    public void printBars(double userCount)
+    {
+        int star1 = 0;
+        int star2 = 0;
+        int star3 = 0;
+        int star4 = 0;
+        int star5 = 0;
+
+        string bar1 = "0%";
+        string bar2 = "0%";
+        string bar3 = "0%";
+        string bar4 = "0%";
+        string bar5 = "0%";
+
+        foreach (var item in Model)
+        {
+            switch (item.reviewRate)
+            {
+                case 1:
+                    star1++;
+                    break;
+                case 2:
+                    star2++;
+                    break;
+                case 3:
+                    star3++;
+                    break;
+                case 4:
+                    star4++;
+                    break;
+                case 5:
+                    star5++;
+                    break;
+            }
+        }
+
+        bar1 = ((star1 / userCount) * 100).ToString() + "%";
+        bar2 = ((star2 / userCount) * 100).ToString() + "%";
+        bar3 = ((star3 / userCount) * 100).ToString() + "%";
+        bar4 = ((star4 / userCount) * 100).ToString() + "%";
+        bar5 = ((star5 / userCount) * 100).ToString() + "%";
+
+        <div class="side">
+            <div>5 star</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-5" style="width:@bar5"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>@star5</div>
+        </div>
+        <div class="side">
+            <div>4 star</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-4" style="width:@bar4"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>@star4</div>
+        </div>
+        <div class="side">
+            <div>3 star</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-3" style="width:@bar3"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>@star3</div>
+        </div>
+        <div class="side">
+            <div>2 star</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-2" style="width:@bar2"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>@star2</div>
+        </div>
+        <div class="side">
+            <div>1 star</div>
+        </div>
+        <div class="middle">
+            <div class="bar-container">
+                <div class="bar-1" style="width:@bar1"></div>
+            </div>
+        </div>
+        <div class="side right">
+            <div>@star1</div>
+        </div>
+    }
+
+
+}
+
+<div class="container">
+    <h1>Reviews</h1>
+    <span class="heading">User Rating</span>
+    @{var avgUserRating = averageUserRating() - (averageUserRating() % 1);
+        var userCount = userRatingCount();
+        printStars(avgUserRating);}
+
+    <p>@avgUserRating average based on @userCount reviews.</p>
+    <hr style="border:3px solid #f1f1f1">
+    <p>@{printBars(userCount);}</p>
+    <p>
+        <a asp-action="Create">Add Review</a>
+    </p>
+    <div class="row">
+        <div class="col">
+            <form asp-controller="Reviews" asp-action="Index">
+                <p>
+                    Search: <input type="text" name="SearchString">
+                    <input type="submit" value="Enter" />
+                </p>
+            </form>
+        </div>
+
+        <div class="col" style="text-align:right;">
+            <button type="button" class="btn btn-light">
+                <li class="dropdown" style="list-style: none;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Sort By
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" style="text-align:center;">
+                        <li>@Html.ActionLink("Date (Newest)", "Index", new { sortOrder = "Date_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Date (Oldest)", "Index", new { sortOrder = "Date_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Name (A-Z)", "Index", new { sortOrder = "Name_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Name (Z-A)", "Index", new { sortOrder = "Name_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Rating (Highest)", "Index", new { sortOrder = "Rating_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Rating (Lowest)", "Index", new { sortOrder = "Rating_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Title (A-Z)", "Index", new { sortOrder = "Title_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Title (Z-A)", "Index", new { sortOrder = "Title_D", CurrentSort = ViewBag.CurrentSort })</li>
+
+                    </ul>
+                </li>
+            </button>
+        </div>
+    </div>
+    @*<form asp-controller="Reviews" asp-action="Index">
+            <p>
+                Search: <input type="text" name="SearchString">
+                <input type="submit" value="Enter" />
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Sort By
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Date (Newest)", "Index", new { sortOrder = "Date_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Date (Oldest)", "Index", new { sortOrder = "Date_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Name (A-Z)", "Index", new { sortOrder = "Name_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Name (Z-A)", "Index", new { sortOrder = "Name_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Rating (Highest)", "Index", new { sortOrder = "Rating_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Rating (Lowest)", "Index", new { sortOrder = "Rating_D", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Title (A-Z)", "Index", new { sortOrder = "Title_A", CurrentSort = ViewBag.CurrentSort })</li>
+                        <li>@Html.ActionLink("Title (Z-A)", "Index", new { sortOrder = "Title_D", CurrentSort = ViewBag.CurrentSort })</li>
+
+                    </ul>
+                </li>
+            </p>
+        </form>*@
+
+
+    @if (!Model.ToList().Any())
+    {
+        <h4>No Reivews Found</h4>
+        <p> Why don't you add a review while you're here!</p>
+    }
+    else
+    {
         <ul id="id01">
             @foreach (var item in Model)
             {
@@ -30,7 +242,6 @@
                         {
                             <span><a class="fa fa-star"></a></span>
                         }
-
                     }
 
                     <h3>
@@ -50,7 +261,12 @@
                 </li>
             }
         </ul>
-        <!--
+
+
+
+    }
+
+    <!--
     <table class="table">
         <thead>
             <tr>
@@ -78,31 +294,31 @@
             </tr>
         </thead>
         <tbody>
-        -->
-        @*@foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.reviewerName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.reviewRate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.reviewDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.reviewContent)
-                        </td>
-                        <td>
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>*@
-    </div>
+    -->
+    @*@foreach (var item in Model)
+        {
+        <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.reviewerName)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.reviewRate)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.reviewDate)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.reviewContent)
+                  </td>
+        <td>
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                      <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                </tr>
+                          }
+                    </tbody>
+                </table>*@
+</div>
