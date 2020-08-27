@@ -11,7 +11,7 @@ function checkTextBox() {
 }
 
 function calcFormat(days, cost) {
-    document.getElementById("totalCost").value = '$' + (days * cost).toFixed(2);
+    document.getElementById("totalCost").value = (days * cost).toFixed(2);
 }
 
 function calculateCost(dateBegin, dateEnd) {
@@ -25,15 +25,15 @@ function calculateCost(dateBegin, dateEnd) {
     if (isNaN(differenceInDays) == false) {
 
         switch (room) {
-            case "Room101":
+            case "Room 101":
                 roomCost = 10;
                 calcFormat(differenceInDays, roomCost);
                 break;
-            case "Room102":
+            case "Room 102":
                 roomCost = 20;
                 calcFormat(differenceInDays, roomCost);
                 break;
-            case "Room103":
+            case "Room 103":
                 roomCost = 30;
                 calcFormat(differenceInDays, roomCost);
                 break;
