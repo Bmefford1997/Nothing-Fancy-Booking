@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,24 @@ namespace Nothing_Fancy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,reserverName,nameOfRoom,reserveDateBegin,reserveDateEnd,cost")] Reservation reservation)
         {
+            DateTime start = reservation.reserveDateBegin;
+            DateTime end = reservation.reserveDateEnd;
+            string room = reservation.nameOfRoom;
+
+            
+            var dbList = from r in _context.Reservation
+                         where r.nameOfRoom == room
+                         where r.reserveDateBegin <= end
+                         where r.reserveDateEnd >= start
+                         select r;
+
+            if (dbList.Any()) 
+            {
+                ModelState.AddModelError("reserveDateBegin", "There is a date conflict in our database, check our calendar for availability!");
+                return View(reservation);
+            }
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(reservation);
@@ -63,6 +82,8 @@ namespace Nothing_Fancy.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(reservation);
+
+
         }
 
         // GET: Reservation/Edit/5
