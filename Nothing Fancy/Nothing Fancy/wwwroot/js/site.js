@@ -10,8 +10,12 @@ function checkTextBox() {
     calculateCost(dateBegin, dateEnd)
 }
 
+
 function calcFormat(days, cost) {
+    if ((days*cost) > 0)
     document.getElementById("totalCost").value = (days * cost).toFixed(2);
+    else
+        document.getElementById("totalCost").value = ""
 }
 
 function calculateCost(dateBegin, dateEnd) {
@@ -75,3 +79,5 @@ for (let i = 0; i < stars.length; i++) {
         }
     })
 }
+
+
