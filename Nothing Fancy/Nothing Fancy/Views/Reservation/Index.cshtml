@@ -4,14 +4,43 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Reservation List</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="row">
+    <div class="col">
+        <form asp-controller="Reservation" asp-action="Index">
+            <p>
+                Search: <input type="text" name="SearchString">
+                <input type="submit" value="Enter / Revert" />
+            </p>
+        </form>
+    </div>
+
+    <div class="col" style="text-align:right;">
+
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Sort By
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu" style="text-align:center;">
+            <li>@Html.ActionLink("Date (Ascending)", "Index", new { sortOrder = "Date_A", CurrentSort = ViewBag.CurrentSort })</li>
+            <li>@Html.ActionLink("Date (Descending)", "Index", new { sortOrder = "Date_D", CurrentSort = ViewBag.CurrentSort })</li>
+            <li>@Html.ActionLink("Name (A-Z)", "Index", new { sortOrder = "Name_A", CurrentSort = ViewBag.CurrentSort })</li>
+            <li>@Html.ActionLink("Name (Z-A)", "Index", new { sortOrder = "Name_D", CurrentSort = ViewBag.CurrentSort })</li>
+
+        </ul>
+    </div>
+</div>
+
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Booking ID:
+            </th>
             <th>
                 Name:
             </th>
@@ -33,27 +62,30 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.reserverName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nameOfRoom)
-                </td>
-                <td>
-                    @String.Format("{0:MM/dd/yyyy}", item.reserveDateBegin)
-                </td>
-                <td>
-                    @String.Format("{0:MM/dd/yyyy}", item.reserveDateEnd)
-                </td>
-                <td>
-                    @String.Format("{0:c}", item.cost)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reserverName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nameOfRoom)
+            </td>
+            <td>
+                @String.Format("{0:MM/dd/yyyy}", item.reserveDateBegin)
+            </td>
+            <td>
+                @String.Format("{0:MM/dd/yyyy}", item.reserveDateEnd)
+            </td>
+            <td>
+                @String.Format("{0:c}", item.cost)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
