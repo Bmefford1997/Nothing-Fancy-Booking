@@ -91,7 +91,6 @@
 
         </div>
         <div class="col-6">
-
             <div class="row">
                 <p class="pr-3">Average User Rating:  </p>
                 @{var avgUserRating = averageUserRating();
@@ -99,11 +98,9 @@
                     printStars(avgUserRating);}
             </div>
 
-
             <div class="row">
                 <p> <strong>@avgUserRating.ToString("#.##") / 5 </strong> average based on <strong> @userCount reviews </strong>.</p>
             </div>
-
 
             <div class="row">
                 @{printBars(userCount);}

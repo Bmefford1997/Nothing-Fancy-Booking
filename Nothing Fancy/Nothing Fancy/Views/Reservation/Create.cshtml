@@ -7,7 +7,10 @@
 
 <div class="container">
     <h1>Create</h1>
-
+    <!-- This variable is for getting all the dates in our Database and putting it into a dictionary that is tied to a Room number as a key.
+         With this we can disable dates that have been reserved for that Room number by calling our javascript function disableDate.-->
+    @{var disableDatess = getDates(ViewBag.List);}
+    <body onload="disableDates();"></body>
     <h4>Reservation</h4>
     <hr />
     <div class="row">
@@ -21,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="nameOfRoom" class="control-label">Room Select:</label>
-                    <select asp-for="nameOfRoom" id="roomSelection" list="rooms" onchange="checkTextBox();" class="form-control">
+                    <select asp-for="nameOfRoom" id="roomSelection" list="rooms" onchange="checkTextBox(); disableDates();" class="form-control">
                         <option value="Room 101">Room 101</option>
                         <option value="Room 102">Room 102</option>
                         <option value="Room 103">Room 103</option>
@@ -57,13 +60,65 @@
     </div>
 </div>
 
+@functions {
+    public IDictionary<string, List<string>> getDates(List<Reservation> reservationsList)
+    {
+        IDictionary<string, List<string>> roomDates = new Dictionary<string, List<string>>();
+        var dates = new List<String>();
+        var allDates = new List<String>();
+        @foreach (var item in (reservationsList))
+        {
+            dates = new List<String>();
+            foreach (var item2 in (DateRange(item.reserveDateBegin, item.reserveDateEnd)))
+            {
+                allDates.Add(item2.ToString("MM/dd/yyyy"));
+                dates.Add(item2.ToString("MM/dd/yyyy"));
+            }
+            if (roomDates.ContainsKey(item.nameOfRoom))
+            {
+                roomDates[item.nameOfRoom].AddRange(dates);
+            }
+            else
+            {
+                roomDates.Add(item.nameOfRoom, dates);
+            }
+        }
+        return roomDates;
+    }
+
+    public IEnumerable<DateTime> DateRange(DateTime fromDate, DateTime toDate)
+    {
+        return Enumerable.Range(0, toDate.Subtract(fromDate).Days + 1)
+                         .Select(d => fromDate.AddDays(d));
+    }
+}
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
+<script>
+        var datesToDisable = [];
+
+        @*var array = JSON.parse('@Html.Raw(disableDates)');*@
         $(function () {
-            $("#datepickerBegin").datepicker();
-            $("#datepickerEnd").datepicker();
+            $("#datepickerBegin").datepicker({
+                beforeShowDay: function (date) {
+                    var string = jQuery.datepicker.formatDate('mm/dd/yy', date);
+                    return [datesToDisable.indexOf(string) == -1]
+                }
+            });
+            $("#datepickerEnd").datepicker({
+                beforeShowDay: function (date) {
+                    var string = jQuery.datepicker.formatDate('mm/dd/yy', date);
+                    return [datesToDisable.indexOf(string) == -1]
+                }
+            });
         });
-    </script>
+
+        function disableDates() {
+            var roomNum = document.getElementById("roomSelection").value;
+            var roomAndDates = JSON.parse('@Html.Raw(Json.Serialize(disableDatess))');
+            datesToDisable = roomAndDates[roomNum];
+        }
+</script>
 }

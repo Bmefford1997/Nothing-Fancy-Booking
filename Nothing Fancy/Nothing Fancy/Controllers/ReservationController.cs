@@ -47,6 +47,9 @@ namespace Nothing_Fancy.Controllers
         // GET: Reservation/Create
         public IActionResult Create()
         {
+            var dbList = from r in _context.Reservation
+                         select r;
+            ViewBag.List = dbList.ToList();
             return View();
         }
 
@@ -82,8 +85,6 @@ namespace Nothing_Fancy.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(reservation);
-
-
         }
 
         // GET: Reservation/Edit/5
