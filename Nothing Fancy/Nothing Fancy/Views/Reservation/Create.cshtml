@@ -9,8 +9,8 @@
     <h1>Create</h1>
     <!-- This variable is for getting all the dates in our Database and putting it into a dictionary that is tied to a Room number as a key.
          With this we can disable dates that have been reserved for that Room number by calling our javascript function disableDate.-->
-    @{var disableDatess = getDates(ViewBag.List);}
-    <body onload="disableDates();"></body>
+    @*@{var disableDatess = getDates(ViewBag.List);}
+    <body onload="disableDates();"></body>*@
     <h4>Reservation</h4>
     <hr />
     <div class="row">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="nameOfRoom" class="control-label">Room Select:</label>
-                    <select asp-for="nameOfRoom" id="roomSelection" list="rooms" onchange="checkTextBox(); disableDates();" class="form-control">
+                    <select asp-for="nameOfRoom" id="roomSelection" list="rooms" onchange="checkTextBox();" class="form-control">
                         <option value="Room 101">Room 101</option>
                         <option value="Room 102">Room 102</option>
                         <option value="Room 103">Room 103</option>
@@ -97,9 +97,12 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 <script>
-        var datesToDisable = [];
+        $(function () {
+            $("#datepickerBegin").datepicker();
+            $("#datepickerEnd").datepicker();
+        });
+        @*var datesToDisable = [];
 
-        @*var array = JSON.parse('@Html.Raw(disableDates)');*@
         $(function () {
             $("#datepickerBegin").datepicker({
                 beforeShowDay: function (date) {
@@ -119,6 +122,6 @@
             var roomNum = document.getElementById("roomSelection").value;
             var roomAndDates = JSON.parse('@Html.Raw(Json.Serialize(disableDatess))');
             datesToDisable = roomAndDates[roomNum];
-        }
+        }*@
 </script>
 }
