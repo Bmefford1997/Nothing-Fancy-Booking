@@ -21,10 +21,41 @@ namespace Nothing_Fancy.Controllers
         }
 
         // GET: Reservation
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Reservation.ToListAsync());
+        //}
+
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            return View(await _context.Reservation.ToListAsync());
+            var reservations = from r in _context.Reservation
+                               select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                reservations = reservations.Where(s => (s.reserverName.Contains(searchString) ||
+                                              s.Id.Equals(searchString)));
+            }
+
+            switch (sortOrder)
+            {
+                case "Date_A":
+                    reservations = _context.Reservation.OrderBy(r => r.reserveDateBegin);
+                    break;
+                case "Date_D":
+                    reservations = _context.Reservation.OrderByDescending(r => r.reserveDateBegin);
+                    break;
+                case "Name_A":
+                    reservations = _context.Reservation.OrderBy(r => r.reserverName);
+                    break;
+                case "Name_D":
+                    reservations = _context.Reservation.OrderByDescending(r => r.reserverName);
+                    break;
+
+            }
+            return View(await reservations.ToListAsync());
         }
+
 
         // GET: Reservation/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,16 +95,18 @@ namespace Nothing_Fancy.Controllers
             DateTime end = reservation.reserveDateEnd;
             string room = reservation.nameOfRoom;
 
-            
+
             var dbList = from r in _context.Reservation
                          where r.nameOfRoom == room
                          where r.reserveDateBegin <= end
                          where r.reserveDateEnd >= start
                          select r;
 
-            if (dbList.Any()) 
+            List<int> reserveIds = dbList.Select(c => c.Id).Distinct().ToList();
+
+            if (dbList.Any())
             {
-                ModelState.AddModelError("reserveDateBegin", "There is a date conflict in our database, check our calendar for availability!");
+                ModelState.AddModelError("reserveDateBegin", "There is a date conflict in our database with reservation ID's " + string.Join(", ", reserveIds) + ", check our calendar for availability!");
                 return View(reservation);
             }
 
