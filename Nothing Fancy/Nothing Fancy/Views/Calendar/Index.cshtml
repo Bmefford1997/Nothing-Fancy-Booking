@@ -1,2 +1,60 @@
-﻿
-<div class="">Bookings for Week of @DateTime.Today.ToString("MM/dd/yyyy") to @DateTime.Today.AddDays(7).ToString("MM/dd/yyyy")</div>
+﻿<div class="container">
+
+    <div class="text-center">
+        <div class="h1">Bookings for Week of @DateTime.Today.ToString("MM/dd/yyyy") to @DateTime.Today.AddDays(6).ToString("MM/dd/yyyy")</div>
+    </div>
+
+    <div class="row pl-4">
+        @for (int i = 0; i < 8; i++)
+        {
+            if (i == 0)
+            {
+                <div class="col border">
+                    Room
+                </div>
+            }
+            else
+            {
+                <div class="col border">
+                    @DateTime.Today.AddDays(i).ToString("MM/dd/yyyy")
+                </div>
+            }
+
+        }
+    </div>
+
+
+
+    @for (int i = 1; i <= 3; i++)
+    {
+        <div class="row pl-4">
+            @for (int j = 0; j < 8; j++)
+            {
+
+                @if (j == 0)
+                {
+                    <div class="col border">
+                        @sendMessage(i)
+                    </div>
+                }
+                else
+                {
+                    <div class="col card  ">
+                        test
+                    </div>
+                }
+
+            }
+        </div>
+    }
+</div>
+
+
+@functions{
+    public string sendMessage(int i)
+    {
+        var roomMessage = "Room 10" + i;
+        return roomMessage;
+    }
+
+}
