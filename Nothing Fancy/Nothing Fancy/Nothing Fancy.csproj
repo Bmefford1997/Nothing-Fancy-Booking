@@ -29,4 +29,75 @@
     <Folder Include="Views\Reservation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\calendar lib\locales\af.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-dz.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-kw.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-ly.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-ma.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-sa.js" />
+    <None Include="wwwroot\calendar lib\locales\ar-tn.js" />
+    <None Include="wwwroot\calendar lib\locales\ar.js" />
+    <None Include="wwwroot\calendar lib\locales\az.js" />
+    <None Include="wwwroot\calendar lib\locales\bg.js" />
+    <None Include="wwwroot\calendar lib\locales\bs.js" />
+    <None Include="wwwroot\calendar lib\locales\ca.js" />
+    <None Include="wwwroot\calendar lib\locales\cs.js" />
+    <None Include="wwwroot\calendar lib\locales\da.js" />
+    <None Include="wwwroot\calendar lib\locales\de.js" />
+    <None Include="wwwroot\calendar lib\locales\el.js" />
+    <None Include="wwwroot\calendar lib\locales\en-au.js" />
+    <None Include="wwwroot\calendar lib\locales\en-gb.js" />
+    <None Include="wwwroot\calendar lib\locales\en-nz.js" />
+    <None Include="wwwroot\calendar lib\locales\es-us.js" />
+    <None Include="wwwroot\calendar lib\locales\es.js" />
+    <None Include="wwwroot\calendar lib\locales\et.js" />
+    <None Include="wwwroot\calendar lib\locales\eu.js" />
+    <None Include="wwwroot\calendar lib\locales\fa.js" />
+    <None Include="wwwroot\calendar lib\locales\fi.js" />
+    <None Include="wwwroot\calendar lib\locales\fr-ca.js" />
+    <None Include="wwwroot\calendar lib\locales\fr-ch.js" />
+    <None Include="wwwroot\calendar lib\locales\fr.js" />
+    <None Include="wwwroot\calendar lib\locales\gl.js" />
+    <None Include="wwwroot\calendar lib\locales\he.js" />
+    <None Include="wwwroot\calendar lib\locales\hi.js" />
+    <None Include="wwwroot\calendar lib\locales\hr.js" />
+    <None Include="wwwroot\calendar lib\locales\hu.js" />
+    <None Include="wwwroot\calendar lib\locales\id.js" />
+    <None Include="wwwroot\calendar lib\locales\is.js" />
+    <None Include="wwwroot\calendar lib\locales\it.js" />
+    <None Include="wwwroot\calendar lib\locales\ja.js" />
+    <None Include="wwwroot\calendar lib\locales\ka.js" />
+    <None Include="wwwroot\calendar lib\locales\kk.js" />
+    <None Include="wwwroot\calendar lib\locales\ko.js" />
+    <None Include="wwwroot\calendar lib\locales\lb.js" />
+    <None Include="wwwroot\calendar lib\locales\lt.js" />
+    <None Include="wwwroot\calendar lib\locales\lv.js" />
+    <None Include="wwwroot\calendar lib\locales\mk.js" />
+    <None Include="wwwroot\calendar lib\locales\ms.js" />
+    <None Include="wwwroot\calendar lib\locales\nb.js" />
+    <None Include="wwwroot\calendar lib\locales\ne.js" />
+    <None Include="wwwroot\calendar lib\locales\nl.js" />
+    <None Include="wwwroot\calendar lib\locales\nn.js" />
+    <None Include="wwwroot\calendar lib\locales\pl.js" />
+    <None Include="wwwroot\calendar lib\locales\pt-br.js" />
+    <None Include="wwwroot\calendar lib\locales\pt.js" />
+    <None Include="wwwroot\calendar lib\locales\ro.js" />
+    <None Include="wwwroot\calendar lib\locales\ru.js" />
+    <None Include="wwwroot\calendar lib\locales\sk.js" />
+    <None Include="wwwroot\calendar lib\locales\sl.js" />
+    <None Include="wwwroot\calendar lib\locales\sq.js" />
+    <None Include="wwwroot\calendar lib\locales\sr-cyrl.js" />
+    <None Include="wwwroot\calendar lib\locales\sr.js" />
+    <None Include="wwwroot\calendar lib\locales\sv.js" />
+    <None Include="wwwroot\calendar lib\locales\th.js" />
+    <None Include="wwwroot\calendar lib\locales\tr.js" />
+    <None Include="wwwroot\calendar lib\locales\ug.js" />
+    <None Include="wwwroot\calendar lib\locales\uk.js" />
+    <None Include="wwwroot\calendar lib\locales\uz.js" />
+    <None Include="wwwroot\calendar lib\locales\vi.js" />
+    <None Include="wwwroot\calendar lib\locales\zh-cn.js" />
+    <None Include="wwwroot\calendar lib\locales\zh-tw.js" />
+  </ItemGroup>
+
 </Project>
