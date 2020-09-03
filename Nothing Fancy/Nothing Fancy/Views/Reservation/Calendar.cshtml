@@ -4,7 +4,12 @@
     ViewData["Title"] = "Weekly";
 }
 
-<div class="container">
+<div class="container pt-4 pb-4">
+    <div class="pb-3 text-right">
+        <a asp-area="" asp-controller="Reservation" asp-action="Create" class="btn btn-info">Reserve Now!</a>
+        <a asp-area="" asp-controller="Reservation" asp-action="Detailed" class="btn btn-info">Detailed View</a>
+    </div>
+
     @{var reservations = getReservationInfo();}
     <div id='calendar'></div>
 </div>
@@ -29,7 +34,7 @@
                     reservationInfo.Add("color", "#FFC733");
                     break;
                 case "Room 102":
-                    reservationInfo.Add("color", "#33FFF6");
+                    reservationInfo.Add("color", "#228B22");
                     break;
                 case "Room 103":
                     reservationInfo.Add("color", "#3342FF");
