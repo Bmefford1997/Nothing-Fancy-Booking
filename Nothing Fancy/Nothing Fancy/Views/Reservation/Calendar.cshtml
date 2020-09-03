@@ -25,8 +25,8 @@
         {
             reservationInfo = new Dictionary<string, string>();
             reservationInfo.Add("title", (items.reserverName + " in " + items.nameOfRoom));
-            reservationInfo.Add("start", items.reserveDateBegin.ToString("yyyy-MM-dd"));
-            reservationInfo.Add("end", items.reserveDateEnd.ToString("yyyy-MM-dd"));
+            reservationInfo.Add("start", (items.reserveDateBegin.ToString("yyyy-MM-dd") + "T00:00:00"));
+            reservationInfo.Add("end", (items.reserveDateEnd.ToString("yyyy-MM-dd") + "T23:59:59"));
 
             switch (items.nameOfRoom)
             {
