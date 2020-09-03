@@ -5,13 +5,8 @@
 }
 
 
-
-
-
 <div class="container">
     <h1>Reviews</h1>
-
-
     <p>
         <a asp-action="Create">Write a Review!</a>
     </p>
@@ -90,11 +85,17 @@
             }
 
         </div>
-        <div class="col-6">
+        @{var avgUserRating = averageUserRating();
+            var display = "visible";
+            if (Double.IsNaN(avgUserRating))
+            {
+                display = "hidden";
+            }
+        }
+        <div class="col-6" style="visibility: @display">
             <div class="row">
                 <p class="pr-3">Average User Rating:  </p>
-                @{var avgUserRating = averageUserRating();
-                    var userCount = userRatingCount();
+                @{var userCount = userRatingCount();
                     printStars(avgUserRating);}
             </div>
 
