@@ -1,59 +1,74 @@
-﻿<div class="container pb-3">
+﻿@model IEnumerable<Nothing_Fancy.Models.Reservation>
 
-    <div class="text-center">
-        <div class="h1">Bookings for Week of @DateTime.Today.ToString("MM/dd/yyyy") to @DateTime.Today.AddDays(6).ToString("MM/dd/yyyy")</div>
-    </div>
-    
-    <div class="row pl-4">
-        @for (int i = 0; i < 8; i++)
-        {
-            if (i == 0)
-            {
-                <div class="col border">
-                    Room
-                </div>
-            }
-            else
-            {
-                <div class="col border">
-                    @DateTime.Today.AddDays(i).ToString("MM/dd/yyyy")
-                </div>
-            }
+@{
+    ViewData["Title"] = "Weekly";
+}
 
-        }
-    </div>
-
-
-
-    @for (int i = 1; i <= 3; i++)
-    {
-        <div class="row pl-4">
-            @for (int j = 0; j < 8; j++)
-            {
-
-                @if (j == 0)
-                {
-                    <div class="col border" id="weekCard">
-                        @sendMessage(i)
-                    </div>
-                }
-                else
-                {
-                    <div class="col card " id="weekCard">
-                        test
-                    </div>
-                }
-
-            }
-        </div>
-    }
+<div class="container">
+    @{var s = getReservationInfo();}
+    <div id='calendar'></div>
 </div>
-<a asp-area="" asp-controller="Reservation" asp-action="Detailed" class="btn btn-info">View Detailed List</a>
 
-
-@functions{
-    public string sendMessage(int i)
+@functions {
+    public List<IDictionary<string, string>> getReservationInfo()
     {
-        return "Room 10" + i;
+        var reservations = new List<IDictionary<string, string>>();
+        var reservationInfo = new Dictionary<string, string>();
+
+
+        foreach (var items in Model)
+        {
+            reservationInfo = new Dictionary<string, string>();
+            reservationInfo.Add("title", (items.reserverName + " in " + items.nameOfRoom));
+            reservationInfo.Add("start", items.reserveDateBegin.ToString("yyyy-MM-dd"));
+            reservationInfo.Add("end", items.reserveDateEnd.ToString("yyyy-MM-dd"));
+
+            switch (items.nameOfRoom)
+            {
+                case "Room 101":
+                    reservationInfo.Add("color", "#FFC733");
+                    break;
+                case "Room 102":
+                    reservationInfo.Add("color", "#33FFF6");
+                    break;
+                case "Room 103":
+                    reservationInfo.Add("color", "#3342FF");
+                    break;
+            }
+            reservations.Add(reservationInfo);
+        }
+
+        return reservations;
     }
 }
+
+<script src="~/calendar lib/main.js"></script>
+<script>
+    var test = JSON.parse('@Html.Raw(Json.Serialize(s))');
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+            initialDate: today,
+            navLinks: true, // can click day/week names to navigate views
+            businessHours: true, // display business hours
+            editable: true,
+            selectable: true,
+            events: test
+        });
+
+        calendar.render();
+    });</script>
+

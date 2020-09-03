@@ -200,9 +200,11 @@ namespace Nothing_Fancy.Controllers
             return _context.Reservation.Any(e => e.Id == id);
         }
 
-        public IActionResult Weekly()
+        public async Task<IActionResult> Weekly()
         {
-            return View();
+            var reservations = from r in _context.Reservation
+                               select r;
+            return View(await reservations.ToListAsync());
         }
     }
 }
