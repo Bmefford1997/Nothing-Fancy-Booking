@@ -20,13 +20,8 @@ namespace Nothing_Fancy.Controllers
             _context = context;
         }
 
-        // GET: Reservation
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Reservation.ToListAsync());
-        //}
 
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Detailed(string sortOrder, string searchString)
         {
             var reservations = from r in _context.Reservation
                                select r;
@@ -203,6 +198,11 @@ namespace Nothing_Fancy.Controllers
         private bool ReservationExists(int id)
         {
             return _context.Reservation.Any(e => e.Id == id);
+        }
+
+        public IActionResult Weekly()
+        {
+            return View();
         }
     }
 }
