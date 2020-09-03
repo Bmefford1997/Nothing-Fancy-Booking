@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    @{var s = getReservationInfo();}
+    @{var reservations = getReservationInfo();}
     <div id='calendar'></div>
 </div>
 
@@ -44,7 +44,7 @@
 
 <script src="~/calendar lib/main.js"></script>
 <script>
-    var test = JSON.parse('@Html.Raw(Json.Serialize(s))');
+    var reservations = JSON.parse('@Html.Raw(Json.Serialize(reservations))');
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -59,14 +59,14 @@
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                right: 'dayGridMonth,listMonth'
             },
             initialDate: today,
             navLinks: true, // can click day/week names to navigate views
             businessHours: true, // display business hours
             editable: true,
             selectable: true,
-            events: test
+            events: reservations
         });
 
         calendar.render();
