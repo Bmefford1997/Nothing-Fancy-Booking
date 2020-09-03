@@ -1,9 +1,9 @@
-﻿<div class="container">
+﻿<div class="container pb-3">
 
     <div class="text-center">
         <div class="h1">Bookings for Week of @DateTime.Today.ToString("MM/dd/yyyy") to @DateTime.Today.AddDays(6).ToString("MM/dd/yyyy")</div>
     </div>
-
+    
     <div class="row pl-4">
         @for (int i = 0; i < 8; i++)
         {
@@ -33,13 +33,13 @@
 
                 @if (j == 0)
                 {
-                    <div class="col border">
+                    <div class="col border" id="weekCard">
                         @sendMessage(i)
                     </div>
                 }
                 else
                 {
-                    <div class="col card  ">
+                    <div class="col card " id="weekCard">
                         test
                     </div>
                 }
@@ -48,13 +48,12 @@
         </div>
     }
 </div>
+<a asp-area="" asp-controller="Reservation" asp-action="Detailed" class="btn btn-info">View Detailed List</a>
 
 
 @functions{
     public string sendMessage(int i)
     {
-        var roomMessage = "Room 10" + i;
-        return roomMessage;
+        return "Room 10" + i;
     }
-
 }

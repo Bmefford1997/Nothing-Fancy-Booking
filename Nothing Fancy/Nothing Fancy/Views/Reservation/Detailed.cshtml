@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Nothing_Fancy.Models.Reservation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Detailed Calendar";
 }
 
 <h1>Reservation List</h1>
@@ -10,7 +10,7 @@
 </p>
 <div class="row">
     <div class="col">
-        <form asp-controller="Reservation" asp-action="Index">
+        <form asp-controller="Reservation" asp-action="Detailed">
             <p>
                 Search: <input type="text" name="SearchString">
                 <input type="submit" value="Enter / Revert" />
@@ -89,3 +89,4 @@
         }
     </tbody>
 </table>
+<a asp-area="" asp-controller="Reservation" asp-action="Weekly" class="btn btn-info">View Availability</a>
