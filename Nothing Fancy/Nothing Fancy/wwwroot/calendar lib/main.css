@@ -592,6 +592,7 @@ A HORIZONTAL event
 .fc-h-event .fc-event-time {
     max-width: 100%; /* clip overflow on this element */
     overflow: hidden;
+
   }
 .fc-h-event .fc-event-title-container { /* serves as a container for the sticky cushion */
     flex-grow: 1;
@@ -698,6 +699,7 @@ A HORIZONTAL event
 .fc-daygrid-day-frame,
 .fc-daygrid-day-events,
 .fc-daygrid-event-harness { /* for event top/bottom margins */
+    padding-bottom: 15px;
 }
 .fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {
   content: "";
