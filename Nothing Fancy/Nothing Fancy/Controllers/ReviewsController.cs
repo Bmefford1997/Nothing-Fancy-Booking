@@ -223,9 +223,38 @@ namespace Nothing_Fancy.Controllers
         // API POST
         [HttpPost]
         [Route("api/v1/reviews")]
-        public IActionResult PostReview([FromBody] string text)
+        public async Task<IActionResult> PostReview([FromBody] Dictionary<string, string> jsonInfo)
         {
-            return Ok(text);
+            if (!jsonInfo.ContainsKey("Title"))
+            {
+                return BadRequest("Did not have Title key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("Name"))
+            {
+                return BadRequest("Did not have Name key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("Rate"))
+            {
+                return BadRequest("Did not have Rate key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("Content"))
+            {
+                return BadRequest("Did not have Content key.");
+            }
+
+            var review = new Review();
+            review.Title = jsonInfo["Title"];
+            review.reviewerName = jsonInfo["Name"];
+            review.reviewRate = double.Parse(jsonInfo["Rate"]);
+            review.reviewDate = DateTime.Today;
+            review.reviewContent = jsonInfo["Content"];
+
+            await Create(review);
+
+            return Ok(review);
         }
     }
 }

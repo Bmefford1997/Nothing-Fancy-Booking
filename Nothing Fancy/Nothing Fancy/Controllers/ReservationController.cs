@@ -156,5 +156,98 @@ namespace Nothing_Fancy.Controllers
                                select r;
             return View(await reservations.ToListAsync());
         }
+
+        // API GET
+        [HttpGet]
+        [Route("api/v1/reservations")]
+        public IActionResult GetReservations([FromQuery] string ID, [FromQuery] string Name, [FromQuery] string RoomNumber,
+                                             [FromQuery] string DateBegin, [FromQuery] string DateEnd, [FromQuery] string Cost)
+        {
+            var reservations = from r in _context.Reservation
+                               select r;
+
+            if (!String.IsNullOrEmpty(ID))
+            {
+                reservations = reservations.Where(r => (r.Id == Int16.Parse(ID)));
+            }
+
+            if (!String.IsNullOrEmpty(Name))
+            {
+                reservations = reservations.Where(r => (r.reserverName == Name));
+            }
+
+            if (!String.IsNullOrEmpty(RoomNumber))
+            {
+                reservations = reservations.Where(r => (r.nameOfRoom.Contains(RoomNumber)));
+            }
+
+            if (!String.IsNullOrEmpty(DateBegin))
+            {
+                reservations = reservations.Where(r => (r.reserveDateBegin == DateTime.Parse(DateBegin)));
+            }
+
+            if (!String.IsNullOrEmpty(DateEnd))
+            {
+                reservations = reservations.Where(r => (r.reserveDateEnd == DateTime.Parse(DateEnd)));
+            }
+
+            if (!String.IsNullOrEmpty(Cost))
+            {
+                reservations = reservations.Where(r => (r.cost == double.Parse(Cost)));
+            }
+
+            return Ok(reservations);
+        }
+
+        // API POST
+        [HttpPost]
+        [Route("api/v1/reservations")]
+        public async Task<IActionResult> PostReview([FromBody] Dictionary<string, string> jsonInfo)
+        {
+            if (!jsonInfo.ContainsKey("Name"))
+            {
+                return BadRequest("Did not have Name key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("RoomNumber"))
+            {
+                return BadRequest("Did not have RoomNumber key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("DateBegin"))
+            {
+                return BadRequest("Did not have DateBegin key.");
+            }
+
+            else if (!jsonInfo.ContainsKey("DateEnd"))
+            {
+                return BadRequest("Did not have DateEnd key.");
+            }
+
+            var reservation = new Reservation();
+            reservation.reserverName = jsonInfo["Name"];
+            reservation.nameOfRoom = jsonInfo["RoomNumber"];
+            reservation.reserveDateBegin = DateTime.Parse(jsonInfo["DateBegin"]);
+            reservation.reserveDateEnd = DateTime.Parse(jsonInfo["DateEnd"]);
+
+            switch (jsonInfo["RoomNumber"])
+            {
+                case "Room 101":
+                    reservation.cost = (reservation.reserveDateEnd - reservation.reserveDateBegin).TotalDays * 10;
+                    break;
+                case "Room 102":
+                    reservation.cost = (reservation.reserveDateEnd - reservation.reserveDateBegin).TotalDays * 20;
+                    break;
+                case "Room 103":
+                    reservation.cost = (reservation.reserveDateEnd - reservation.reserveDateBegin).TotalDays * 30;
+                    break;
+                default:
+                    return BadRequest(jsonInfo["RoomNumber"] + " is not a room that is listed in our hotel.");
+            };
+
+            await Create(reservation);
+
+            return Ok(reservation);
+        }
     }
 }
