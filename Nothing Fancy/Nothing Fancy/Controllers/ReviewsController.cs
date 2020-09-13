@@ -187,5 +187,45 @@ namespace Nothing_Fancy.Controllers
         {
             return _context.Review.Any(e => e.Id == id);
         }
+
+        // API GET
+        [HttpGet]
+        [Route("api/v1/reviews")]
+        public IActionResult GetReviews([FromQuery] string ID, [FromQuery] string Title, [FromQuery] string Name,
+                                        [FromQuery] string Rate)
+        {
+            var reviews = from r in _context.Review
+                          select r;
+
+            if (!String.IsNullOrEmpty(ID))
+            {
+                reviews = reviews.Where(r => (r.Id == Int16.Parse(ID)));
+            }
+
+            if (!String.IsNullOrEmpty(Title))
+            {
+                reviews = reviews.Where(r => (r.Title == Title));
+            }
+
+            if (!String.IsNullOrEmpty(Name))
+            {
+                reviews = reviews.Where(r => (r.reviewerName.Contains(Name)));
+            }
+
+            if (!String.IsNullOrEmpty(Rate))
+            {
+                reviews = reviews.Where(r => (r.Id == Int16.Parse(Rate)));
+            }
+
+            return Ok(reviews);
+        }
+
+        // API POST
+        [HttpPost]
+        [Route("api/v1/reviews")]
+        public IActionResult PostReview([FromBody] string text)
+        {
+            return Ok(text);
+        }
     }
 }
