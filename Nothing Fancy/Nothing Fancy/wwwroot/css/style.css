@@ -1,4 +1,39 @@
-﻿/* Three column layout */
+﻿.table-api {
+    border: none;
+    border-collapse: collapse;
+}
+
+.th-api {
+    border-left: 3px solid #8f8f8f;
+    border-bottom: 3px solid #8f8f8f;
+    padding: 0px 0px 0px 10px;
+}
+
+    /* Padding: top, right, bottom, left*/
+    table th:first-child {
+        border-left: none;
+        padding: 0px 10px 0px 0px;
+    }
+
+.tr-api {
+    border-bottom: 3px solid #8f8f8f;
+}
+
+    table tr:last-child {
+        border-bottom: none;
+    }
+
+.td-api {
+    border-left: 3px solid #8f8f8f;
+    padding: 0px 0px 0px 10px;
+}
+    /* Padding: top, right, bottom, left*/
+    table td:first-child {
+        border-left: none;
+        padding: 0px 10px 0px 0px;
+    }
+
+/* Three column layout */
 .side {
     float: left;
     width: 15%;
@@ -142,7 +177,6 @@
 }
 
 #roomImage {
-
     padding-bottom: 30px;
     max-width: 100%;
     height: auto;

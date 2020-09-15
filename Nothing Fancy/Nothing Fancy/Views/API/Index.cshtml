@@ -1,3 +1,422 @@
-﻿<div class="container">
-    Please wait for future release test 9.12 test 4
+﻿@{ var version = "v1";}
+<div class="container">
+    <center>
+        <h1>Rest API Documentation</h1>
+        <br />
+        <br />
+        <h2>REST API Basics </h2>
+        <hr />
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col">
+                <h3>HTTP Methods</h3>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Method</th>
+                            <th class="th-api">Description</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    GET
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Fetch - retrieve resources</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    POST
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Create - create new resources</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col">
+                <h3>Status Codes</h3>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Code</th>
+                            <th class="th-api">Description</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    200
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">OK - request succeeded (GET, PATCH, DELETE)</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    201
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Created - new resource created (POST)</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    400
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Bad Request - malformed request</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    404
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Not Found - resource does not exist</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    5xx
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api">Server Error</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <br />
+        <h2>Reservation API Call</h2>
+        <hr />
+        <div class="row">
+            <p style="text-align:left">
+                For the reservation call, you will using the web routing <code>/api/@version/reservation</code>. The <code>@version</code> is the current version number of the api. This
+                routing url can be used for making <code>GET</code> and <code>POST</code> requests. When making a <code>GET</code> request, you can apply filtering to the routing url to
+                narrow down how much goes into the json that you will recieve. Filtering options can be reference in the table below. As for the <code>Post</code> you must pass a json
+                when making this call to create your reservation. Please reference the table below to know the correct format and keys/values needed in the json.
+            </p>
+        </div>
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col">
+                <h2>Filter Options</h2>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Filter</th>
+                            <th class="th-api">Example</th>
+                            <th class="th-api">Description</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?ID
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?ID=1</code></td>
+                        <td class="td-api">Retrieve only reservation matching this specific ID. In this example we make the call to retrieve the reservation matching ID 1.</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?Name
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?Name=Bill</code></td>
+                        <td class="td-api">Retrieve only reservations matching this specific name. In this example we make the call to retrieve all reservation matching the name Bill.</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?RoomNumber
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?RoomNumber="Room 101"</code></td>
+                        <td class="td-api">
+                            Retrieve only reservations matching this specific Room Number. In this example we make the call to retrieve all reservations
+                            with the room number 101.
+                        </td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?DateBegin
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?DateBegin=07/12/2020</code></td>
+                        <td class="td-api">
+                            Retrieve only reservations matching this specific starting date. In this example we make the call to retrieve all reservations that have this
+                            start date.
+                        </td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?DateEnd
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?DateEnd=07/20/2020</code></td>
+                        <td class="td-api">
+                            Retrieve only reservations matching this specific starting date. In this example we make the call to retrieve all reservations that have this
+                            end date.
+                        </td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?Cost
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/reservation?Cost=100</code></td>
+                        <td class="td-api">
+                            Retrieve only reservations matching this specific cost. In this example we make the call to retrieve all reservations that matches this price of $100.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col">
+                <h2>Attributes</h2>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Attributes</th>
+                            <th class="th-api">Type</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ID
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>number</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Name
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>string</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    RoomNumber
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>string</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    DateBegin
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>DateTime object</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    DateEnd
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>DateTime Object</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Cost
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>number</code></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <h2>Review API Call</h2>
+        <hr />
+        <div class="row">
+            <p style="text-align:left">
+                For the review call, you will using the web routing <code>/api/@version/review</code>. The <code>@version</code> is the current version number of the api. This
+                routing url can be used for making <code>GET</code> and <code>POST</code> requests. When making a <code>GET</code> request, you can apply filtering to the routing url to
+                narrow down how much goes into the json that you will recieve. Filtering options can be reference in the table below. As for the <code>Post</code> you must pass a json
+                when making this call to create your review. Please reference the table below to know the correct format and keys/values needed in the json.
+            </p>
+        </div>
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col">
+                <h2>Filter Options</h2>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Filter</th>
+                            <th class="th-api">Example</th>
+                            <th class="th-api">Description</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?ID
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/review?ID=1</code></td>
+                        <td class="td-api">Retrieve only review matching this specific ID. In this example we make the call to review the reservation matching ID 1.</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?Title
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/review?Title="Awesome Hotel"</code></td>
+                        <td class="td-api">
+                            Retrieve only reviews matching this specific review Title. In this example we make the call to retrieve all reviews
+                            with the title "Awesome Hotel" or anything containing that in their title.
+                        </td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?Name
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/review?Name=Bill</code></td>
+                        <td class="td-api">Retrieve only reviews matching this specific name. In this example we make the call to retrieve all reviews matching the name Bill.</td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ?Rate
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>/api/@version/review?Rate=4</code></td>
+                        <td class="td-api">
+                            Retrieve only reviews matching this specific rating. In this example we make the call to retrieve all reviews that have this
+                            review rating.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col">
+                <h2>Attributes</h2>
+                <table class="table-api">
+                    <thead>
+                        <tr>
+                            <th class="th-api">Attributes</th>
+                            <th class="th-api">Type</th>
+                        </tr>
+                    </thead>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    ID
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>number</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Title
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>string</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Name
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>string</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Rate
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>number</code></td>
+                    </tr>
+                    <tr class="tr-api">
+                        <td class="td-api">
+                            <span class="badge badge-light" style="font-size:20px;">
+                                <code>
+                                    Content
+                                </code>
+                            </span>
+                        </td>
+                        <td class="td-api"><code>string</code></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
 </div>
